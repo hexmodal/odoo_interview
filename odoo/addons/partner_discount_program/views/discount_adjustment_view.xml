@@ -1,0 +1,47 @@
+<odoo>
+    <record id="view_discount_adjustment_tree" model="ir.ui.view">
+        <field name="name">partner.discount.adjustment.tree</field>
+        <field name="model">partner.discount.adjustment</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="partner_id"/>
+                <field name="base_delta"/>
+                <field name="extra_delta"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_discount_adjustment_form" model="ir.ui.view">
+        <field name="name">partner.discount.adjustment.form</field>
+        <field name="model">partner.discount.adjustment</field>
+        <field name="arch" type="xml">
+            <form string="Discount Adjustment">
+                <sheet>
+                    <group>
+                        <field name="partner_id"/>
+                        <field name="base_delta"/>
+                        <field name="extra_delta"/>
+                        <field name="state" readonly="1"/>
+                    </group>
+                    <footer>
+                        <button name="action_apply" type="object" string="Apply" class="btn-primary"
+                                invisible="state == 'applied'"/>
+                        <button string="Close" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_discount_adjustment" model="ir.actions.act_window">
+        <field name="name">Discount Adjustments</field>
+        <field name="res_model">partner.discount.adjustment</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_discount_adjustment_root"
+              name="Discount Adjustments"
+              parent="base.menu_custom"
+              action="action_discount_adjustment"/>
+</odoo>

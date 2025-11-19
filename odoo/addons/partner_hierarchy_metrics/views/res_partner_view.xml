@@ -1,0 +1,14 @@
+<odoo>
+    <record id="view_partner_form_inherit_hierarchy_metrics" model="ir.ui.view">
+        <field name="name">res.partner.form.hierarchy.metrics</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet/group" position="inside">
+                <group string="Hierarchy Metrics">
+                    <field name="x_total_child_tree"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,29 @@
+<odoo>
+    <record id="view_partner_form_inherit_contact_comment" model="ir.ui.view">
+        <field name="name">res.partner.form.contact.comment</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet/group" position="replace">
+                <group string="Contact Information">
+                    <field name="type" invisible="1"/>
+                    <field name="street" invisible="1"/>
+                    <field name="street2" invisible="1"/>
+                    <field name="city" invisible="1"/>
+                    <field name="state_id" invisible="1"/>
+                    <field name="zip" invisible="1"/>
+                    <field name="country_id" invisible="1"/>
+                    <field name="lang" invisible="1"/>
+                    <field name="user_id" invisible="1"/>
+                    <field name="user_ids" invisible="1"/>
+                    <field name="function" invisible="1"/>
+                    <field name="mobile" invisible="1"/>
+                    <field name="name"/>
+                    <field name="phone"/>
+                    <field name="email"/>
+                    <field name="x_contact_comment"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>

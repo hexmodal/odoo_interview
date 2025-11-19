@@ -1,0 +1,10 @@
+<odoo>
+    <t t-name="partner_code_ui.CustomerCodeField" owl="1">
+        <div class="o_partner_code_field">
+            <input type="text"
+                   class="o_input"
+                   t-att-value="props.value || ''"
+                   t-on-input="onInput"/>
+        </div>
+    </t>
+</odoo>
