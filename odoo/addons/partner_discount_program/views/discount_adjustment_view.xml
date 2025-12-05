@@ -17,6 +17,10 @@
         <field name="model">partner.discount.adjustment</field>
         <field name="arch" type="xml">
             <form string="Discount Adjustment">
+                <header>
+                    <button name="action_apply" type="object" string="Apply" class="oe_highlight"
+                            invisible="state == 'applied'"/>
+                </header>
                 <sheet>
                     <group>
                         <field name="partner_id"/>
@@ -24,11 +28,6 @@
                         <field name="extra_delta"/>
                         <field name="state" readonly="1"/>
                     </group>
-                    <footer>
-                        <button name="action_apply" type="object" string="Apply" class="btn-primary"
-                                invisible="state == 'applied'"/>
-                        <button string="Close" class="btn-secondary" special="cancel"/>
-                    </footer>
                 </sheet>
             </form>
         </field>
@@ -38,10 +37,16 @@
         <field name="name">Discount Adjustments</field>
         <field name="res_model">partner.discount.adjustment</field>
         <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new discount adjustment
+            </p>
+        </field>
     </record>
 
+    <!-- Root menu item - will appear in main menu -->
     <menuitem id="menu_discount_adjustment_root"
               name="Discount Adjustments"
-              parent="base.menu_custom"
+              sequence="100"
               action="action_discount_adjustment"/>
 </odoo>

@@ -19,6 +19,14 @@ class PartnerDiscountAdjustment(models.Model):
             if not adj.partner_id:
                 continue
             partner = adj.partner_id
-            partner.x_base_discount = (partner.x_base_discount or 0.0) + (adj.base_delta or 0.0)
-            partner.x_extra_discount = (partner.x_extra_discount or 0.0) + (adj.extra_delta or 0.0)
-            adj.state = "applied"
+            # Calculate new discount values
+            new_base = (partner.x_base_discount or 0.0) + (adj.base_delta or 0.0)
+            new_extra = (partner.x_extra_discount or 0.0) + (adj.extra_delta or 0.0)
+            # Update partner discounts using write() to persist changes
+            partner.write({
+                'x_base_discount': new_base,
+                'x_extra_discount': new_extra,
+            })
+            # Mark adjustment as applied
+            adj.write({'state': 'applied'})
+        return True
